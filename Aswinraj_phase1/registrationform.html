@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+    <label>Name:<span class="required">*</span></label><br>
+    <input type="text"  required pattern="[A-Za-z]+" title="Please enter only letters" placeholder="Enter your full name"><br><br>
+    <label>Email:<span class="required">*</span></label><br>
+    <input type="email" required placeholder="Enter your email"><br><br>
+    <label>Password:<span class="required">*</span></label><br>
+    <input type="password" required placeholder="Enter your password"><br><br>
+    <label>Gender:<span class="required">*</span></label><br><br>
+    <input type="radio" name="gender" value="Male" required>
+    <label>Male</label>
+    <input type="radio" name="gender" value="Female" required>
+    <label>Female</label><br><br>
+
+    <label>Hobbies:<span class="required">*</span></label><br><br>
+    <label>Playing</label>
+    <input type="checkbox">
+    <label>Studying</label>
+    <input type="checkbox">
+    <label>coding</label>
+    <input type="checkbox">
+    <label>travelling</label>
+    <input type="checkbox"><br>
+    <h1><input type="submit" value="Save"></h1>
+</form>
+    
+</body>
+</html>
