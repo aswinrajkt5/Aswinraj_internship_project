@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Even Odd Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .even {
+            color: green;
+        }
+
+        .odd {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Even or Odd Checker</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const input = document.getElementById("numberInput");
+    const result = document.getElementById("result");
+
+    input.addEventListener("input", function () {
+        let value = input.value;
+
+        if (value === "") {
+            result.textContent = "";
+            return;
+        }
+
+        let num = parseInt(value);
+
+        if (num % 2 === 0) {
+            result.textContent = "Even Number";
+            result.className = "result even";
+        } else {
+            result.textContent = "Odd Number";
+            result.className = "result odd";
+        }
+    });
+</script>
+
+</body>
+</html>
