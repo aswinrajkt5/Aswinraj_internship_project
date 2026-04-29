@@ -54,18 +54,19 @@
         }
 
         function addElement() {
-            let newDiv = document.createElement("div");
-            newDiv.textContent = "New Item";
-            newDiv.className = "box";
-            document.body.appendChild(newDiv);
+            let heading = document.createElement("div");
+            heading.textContent = "New Item";
+            heading.className = "box";
+            document.body.appendChild(heading);
         }
 
         function removeElement() {
-            let boxes = document.querySelectorAll(".box");
-
+           let boxes = document.querySelectorAll(".box");
             if (boxes.length > 0) {
                 boxes[boxes.length - 1].remove();
+
             }
+             
         }
     </script>
 
