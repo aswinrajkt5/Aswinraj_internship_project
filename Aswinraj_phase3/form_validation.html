@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 92%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+
+    button {
+      width: 60%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 20%;
+      
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+  
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username">
+    <div id="userError" class="error"></div>
+
+    <input type="text" id="email" placeholder="Email">
+    <div id="emailError" class="error"></div>
+
+    <input type="password" id="password" placeholder="Password">
+    <div id="passError" class="error"></div>
+    <br>
+    <br>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById("loginForm");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    let userError = document.getElementById("userError");
+    let emailError = document.getElementById("emailError");
+    let passError = document.getElementById("passError");
+
+    userError.textContent = "";
+    emailError.textContent = "";
+    passError.textContent = "";
+
+    let isValid = true;
+
+    if (username === "") {
+      userError.textContent = "Username is required";
+      isValid = false;
+    } else if (username.length < 4) {
+      userError.textContent = "Minimum 4 characters required";
+      isValid = false;
+    }
+
+    if (email === "") {
+      emailError.textContent = "Email is required";
+      isValid = false;
+    } else if (!email.match(/^\S+@\S+\.\S+$/)) {
+      emailError.textContent = "Enter a valid email";
+      isValid = false;
+    }
+
+    let passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    if (password === "") {
+      passError.textContent = "Password is required";
+      isValid = false;
+    } else if (!password.match(passwordPattern)) {
+      passError.textContent = "Password must contain at least one letter and one number";
+      isValid = false;
+    }
+
+    if (isValid) {
+      alert("Login successful!");
+    }
+  });
+</script>
+
+</body>
+</html>

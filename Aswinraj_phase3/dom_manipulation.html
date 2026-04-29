@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation task</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f4f4;
+    }
+
+    .container {
+      width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      padding: 8px;
+      width: 70%;
+    }
+
+    button {
+      padding: 3px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    li {
+      margin: 8px;
+    }
+
+    .toggle-btn {
+      font-size: 18px;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Dynamic List</h2>
+  <input type="text" id="itemInput" placeholder="Enter item">
+  <br>
+  <button onclick="addItem()">Add Item</button>
+  <ul id="list"></ul>
+</div>
+
+
+<div class="container">
+  <h2>To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <br>
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
+</div>
+
+
+<div class="container">
+  <h2>Toggle Button</h2>
+  <button id="toggleBtn" class="toggle-btn" onclick="toggle()">OFF</button>
+</div>
+
+<script>
+
+function addItem() {
+  let input = document.getElementById("itemInput");
+  let value = input.value.trim();
+
+  if (value === "") {
+    alert("Enter something!");
+    return;
+  }
+
+  let li = document.createElement("li");
+  li.textContent = value;
+
+  document.getElementById("list").appendChild(li);
+  input.value = "";
+}
+
+
+function addTask() {
+  let input = document.getElementById("taskInput");
+  let task = input.value.trim();
+
+  if (task === "") {
+    alert("Enter a task!");
+    return;
+  }
+
+  let li = document.createElement("li");
+  li.textContent = task;
+
+  let delBtn = document.createElement("button");
+   delBtn.textContent = "Delete";
+
+  delBtn.onclick = function () {
+    li.remove();
+  };
+
+  li.appendChild(delBtn);
+  document.getElementById("taskList").appendChild(li);
+
+  input.value = "";
+}
+
+
+let isOn = false;
+
+function toggle() {
+  let btn = document.getElementById("toggleBtn");
+
+  if (isOn) {
+    btn.textContent = "OFF";
+    btn.style.backgroundColor = "red";
+  } else {
+    btn.textContent = "ON";
+    btn.style.backgroundColor = "green";
+  }
+
+  isOn = !isOn;
+}
+
+document.getElementById("toggleBtn").style.backgroundColor = "red";
+</script>
+
+</body>
+</html>

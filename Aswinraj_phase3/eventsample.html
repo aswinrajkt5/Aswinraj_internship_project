@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Demo</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .box {
+      text-shadow: none;
+      padding: 20px;
+      margin: 20px;
+      background: lightgray;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+      margin: 10px;
+    }
+
+    .preview {
+      font-size: 20px;
+      color: blue;
+      margin-top: 10px;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+  <h3>Button Click Example</h3>
+  <h2 id="title">Hello User</h2>
+  Click the button to change this text:
+  <button id="btn">Click Me</button>
+  </div>
+
+  <hr>
+
+  <div class="box">
+    <h3>Input Live Preview Example</h3>
+    Type in the input box to see live preview:
+  <input type="text" id="inputBox" placeholder="Type something...">
+  <div class="preview" id="previewText"></div>
+  </div>
+
+  <hr>
+
+  <div class="box">
+    <h3>Form Validation Example</h3>
+  <form id="myForm">
+    <input type="text" id="name" placeholder="Enter name">
+    <br>
+    <button type="submit">Submit</button>
+    <p class="error" id="errorMsg"></p>
+  </form>
+  </div>
+
+  <script>
+    //  Button click event
+    const button = document.getElementById("btn");
+    const title = document.getElementById("title");
+
+    button.addEventListener("click", function() {
+      title.textContent = "Button Clicked!";
+    });
+
+    // Input typing – live preview
+    const inputBox = document.getElementById("inputBox");
+    const preview = document.getElementById("previewText");
+
+    inputBox.addEventListener("input", function() {
+      preview.textContent = inputBox.value;
+    });
+
+    //  Form submit – prevent default & validate
+    const form = document.getElementById("myForm");
+    const nameInput = document.getElementById("name");
+    const errorMsg = document.getElementById("errorMsg");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (nameInput.value === "") {
+        errorMsg.textContent = "Name is required!";
+      }
+      else if (!/^[a-zA-Z]+$/.test(nameInput.value)) {
+        errorMsg.textContent = "only letters allowed!";
+      }
+      
+      else {
+        errorMsg.textContent = "";
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+
+</body>
+</html>
